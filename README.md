@@ -19,11 +19,11 @@ API: https://docs.coincap.io/
   
 ### Taches 
 
-- [] recherche de fonctionnalitées supplémentaires (pluvalue du site web)
-- [] recherche des outils/API
-- [] implementation des API
-- [] mise en place d'un serveur NodeJS 
-- [] requetes NodeJS
-- [] ecritures des HTML 
-- [] ecriture des CSS
+- [ ] recherche de fonctionnalitées supplémentaires (pluvalue du site web)
+- [ ] recherche des outils/API
+- [ ] implementation des API
+- [ ] mise en place d'un serveur NodeJS 
+- [ ] requetes NodeJS
+- [ ] ecritures des HTML 
+- [ ] ecriture des CSS
   
