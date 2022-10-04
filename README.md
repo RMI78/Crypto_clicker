@@ -1,29 +1,13 @@
-# Crypto_Center
-Webpage to set up about different cryptos
+# Crypto_clicker
+clicker and idle game about crypton, the game's cryptocurrency
 
 
 ## Techs to use
-API: https://docs.coincap.io/
+Vanilla Javascript
+HTML5+CSS3 
+Serveless game
 
+## Installation
 
-## TO DO LIST 
-
-### Meryam
-  *  Renseignements et recherches
-### Rym 
-  * appels au API (JS)
-### Romain
-  * Base de donnée
-  * Serveur (Node)
-  * HTML+CSS 
-  
-### Taches 
-
-- [ ] recherche de fonctionnalitées supplémentaires (pluvalue du site web)
-- [ ] recherche des outils/API
-- [ ] implementation des API
-- [ ] mise en place d'un serveur NodeJS 
-- [ ] requetes NodeJS
-- [ ] ecritures des HTML 
-- [ ] ecriture des CSS
-  
+Just download the files, open index.html with your browser, and play the game.
+Saves are auomatically saved in the cache's browser or you can generate a text based save yourself
