@@ -11,7 +11,8 @@ window.addEventListener('load', () => {
   const activeBonusCost = document.querySelector('#active_bonus_cost')
   const currentActiveBonus = document.querySelector('#current_active_bonus')
   const messageArea = document.querySelector('#message_area')
-  
+  const saveTextButton = document.querySelector('#save_text')
+  const inputSave = document.querySelector('.output_save')
   
   
   triggerButton.addEventListener('click', () => {
@@ -22,6 +23,8 @@ window.addEventListener('load', () => {
     counter.textContent = Number(number+bonus);
     messageArea.textContent = "Mining Money ^^"
   })
+
+
   activeBonusButton.addEventListener('click', ()=>{
     let number = parseInt(counter.textContent)
     let bonus=parseInt(currentActiveBonus.textContent);
@@ -37,6 +40,16 @@ window.addEventListener('load', () => {
     else{
       messageArea.textContent = "not enough money :'("
     }
+
+    saveTextButton.addEventListener('click', ()=>{
+      let number = parseInt(counter.textContent)
+      let bonus=parseInt(currentActiveBonus.textContent);
+      var save = {
+          score: number,
+          activeBonus: bonus
+      }
+    })
+
     // console.log(bonus)
   })
 
