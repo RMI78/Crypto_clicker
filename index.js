@@ -18,10 +18,12 @@ window.addEventListener('load', () => {
     number++;
     counter.textContent = Number(number+bonus);
     const element = document.getElementById('abcd');
-    if( Number(number+bonus) == 2)
-      element.innerHTML = "New Heading";
+    if( (Number(number+bonus) >= 2) && (Number(number+bonus)<20)) 
+      element.innerHTML = "gooooood!!!!!";
+    else if( (Number(number+bonus)>=20) && (Number(number+bonus)<50)) 
+      element.innerHTML = "u can now buy an active bonus!!!";
     else 
-      element.innerHTML = "";
+      element.innerHTML = " "
   })
   activeBonusButton.addEventListener('click', ()=>{
     bonus++;
