@@ -17,11 +17,18 @@ window.addEventListener('load', () => {
     let number = parseInt(counter.textContent);
     number++;
     counter.textContent = Number(number+bonus);
+    const element = document.getElementById('abcd');
+    if( Number(number+bonus) == 2)
+      element.innerHTML = "New Heading";
+    else 
+      element.innerHTML = "";
   })
   activeBonusButton.addEventListener('click', ()=>{
     bonus++;
     // console.log(bonus)
   })
+
+
 
 
 })
