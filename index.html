@@ -4,25 +4,43 @@
     <meta charset="utf-8" />
     <title>Cookie clicker</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <!-- Favicon -->
     <link rel="shortcut icon" href="images/favicon.png" />
 
     <!-- Template CSS Files -->
 
-    <link rel="stylesheet" href="css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/magnific-popup.css">
-    <link rel="stylesheet" href="css/select2.min.css">
-    <link rel="stylesheet" href="css/style.css">
-	<link rel="stylesheet" href="css/skins/orange.css">
-  <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
-	
-	<!-- Live Style Switcher - demo only -->
-    <link rel="alternate stylesheet" type="text/css" title="orange" href="css/skins/orange.css" />
-    <link rel="alternate stylesheet" type="text/css" title="green" href="css/skins/green.css" />
-    <link rel="alternate stylesheet" type="text/css" title="blue" href="css/skins/blue.css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/magnific-popup.css" />
+    <link rel="stylesheet" href="css/select2.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/skins/orange.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Lato"
+      rel="stylesheet"
+      type="text/css"
+    />
 
+    <!-- Live Style Switcher - demo only -->
+    <link
+      rel="alternate stylesheet"
+      type="text/css"
+      title="orange"
+      href="css/skins/orange.css"
+    />
+    <link
+      rel="alternate stylesheet"
+      type="text/css"
+      title="green"
+      href="css/skins/green.css"
+    />
+    <link
+      rel="alternate stylesheet"
+      type="text/css"
+      title="blue"
+      href="css/skins/blue.css"
+    />
 
     <!-- Live Style Switcher - demo only -->
     <link
@@ -50,9 +68,7 @@
     <script src="js/modernizr.js"></script>
 
     <script src="./index.js"></script>
-
   </head>
-
 
   <body>
     <!-- SVG Preloader Starts -->
@@ -159,7 +175,6 @@
             <div class="title-head-subtitle">
               <p>Appuyer sur le bitcoin pour commencer</p>
             </div>
-
           </div>
           <!-- Section Title Ends -->
           <!-- Section Content Starts -->
@@ -173,13 +188,30 @@
                 alt="about us"
               />
             </div>
-            
+            <div class="col-sm-12 col-md-7 col-lg-6">
+              <div class="tab-content">
+                <span id="value">0</span>
+                <button id="clickme">Click me</button>
+                <button id="active_bonus">Buy active bonus</button>
+                <h3 class="title-about">Your actions</h3>
+
+                <marquee
+                  behavior="scroll"
+                  direction="up"
+                  width="100%"
+                  height="200"
+                  bgcolor="#EEEEEE"
+                >
+                  <h2 id="abcd"></h2>
+                </marquee>
+              </div>
+            </div>
           </div>
           <!-- Section Content Ends -->
         </div>
       </section>
       <!-- About Section Ends -->
-      <br>
+      <br />
       <!-- Features Section Starts -->
       <section class="features">
         <div class="container">
@@ -199,18 +231,18 @@
               </div>
             </a>
             <a class="feature-box col-md-3 col-sm-12">
-                <span class="feature-icon">
-                  <img
-                    id="download-bitcoin"
-                    src="pictures/ASIC.png"
-                    alt="download bitcoin"
-                  />
-                </span>
-                <div class="feature-box-content">
-                  <h3>Outil-ASIC</h3>
-                  <p>10 CrypCoins par seconde</p>
-                </div>
-              </a>
+              <span class="feature-icon">
+                <img
+                  id="download-bitcoin"
+                  src="pictures/ASIC.png"
+                  alt="download bitcoin"
+                />
+              </span>
+              <div class="feature-box-content">
+                <h3>Outil-ASIC</h3>
+                <p>10 CrypCoins par seconde</p>
+              </div>
+            </a>
             <!-- Feature Box Ends -->
             <a class="feature-box col-md-3 col-sm-12">
               <span class="feature-icon">
@@ -249,7 +281,6 @@
       <script src="js/select2.min.js"></script>
       <script src="js/jquery.magnific-popup.min.js"></script>
       <script src="js/custom.js"></script>
-
 
       <!-- Live Style Switcher JS File - only demo -->
       <script src="js/styleswitcher.js"></script>
