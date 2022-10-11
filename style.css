@@ -1,7 +1,151 @@
-*{
-    color:black;
-    background-color: orange;
+* {
+  color: white;
+  font-family: "Montserrat" "ubuntu" sans-serif;
 }
-h1{
-    text-align: center;
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='100%25' width='100%25'%3E%3Cdefs%3E%3Cpattern id='doodad' width='19' height='19' viewBox='0 0 40 40' patternUnits='userSpaceOnUse' patternTransform='rotate(160)'%3E%3Crect width='100%25' height='100%25' fill='%232a4365'/%3E%3Cpath d='M0 9a 11 11 0 0 1 11 11a 9 9 0 0 0 9 9v2a-11-11 0 0 1-11-11a-9-9 0 0 0-9-9z' fill='%231a202c'/%3E%3Cpath d='M20 24.5a 9.5-9.5 0 0 0 9.5-9.5a 10.5-10.5 0 0 1 10.5-10.5v1a-9.5 9.5 0 0 0-9.5 9.5a-10.5 10.5 0 0 1-10.5 10.5zM20 64.5a 9.5-9.5 0 0 0 9.5-9.5a 10.5-10.5 0 0 1 10.5-10.5v1a-9.5 9.5 0 0 0-9.5 9.5a-10.5 10.5 0 0 1-10.5 10.5z' fill='%23ecc94b'/%3E%3C/pattern%3E%3C/defs%3E%3Crect fill='url(%23doodad)' height='200%25' width='200%25'/%3E%3C/svg%3E ")
+}
+
+.content-wrapper {
+  background: linear-gradient(-225deg, #2c060b, #110A11, #110a11, #0d2045);
+  opacity: .7;
+  margin: 0px;
+  padding: 0px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.navbar {
+  display: flex;
+  height: 100px;
+  align-items: center;
+}
+
+.logo-navbar {
+  flex: 1;
+  height: 50px;
+  width: 30px;
+  background-image: url("./pictures/logo2.png");
+  background-repeat: no-repeat;
+}
+
+.right-navbar {
+  flex: 2;
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 30px;
+}
+
+.navbar-item {
+  list-style-type: none;
+  margin: 20px 20px;
+  font-size: 22px;
+}
+
+.body-wrapper {
+  flex: 10;
+  display: flex;
+}
+
+.left-wrapper {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+}
+
+.empty-circle-border {
+  width: 200px;
+  height: 200px;
+  border: white 2px solid;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0);
+  pointer-events: none;
+  position: absolute;
+  top: 100px;
+  left: 100px;
+}
+
+.clickable-button {
+  width: 300px;
+  height: 300px;
+  background-image: url("./pictures/Clicker.png");
+  background-repeat: no-repeat;
+}
+
+.logo_click_text {
+  margin-left: 30px;
+  font-size: 100px;
+  font-weight: 800;
+}
+
+.logo_click_text_second {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.logo_click_subtext {
+  flex: 2;
+  font-size: 20px;
+  font-weight: 200;
+}
+
+.vertical_separator {
+  width: 10;
+  height: 100%;
+  margin-left: 0px 20px 20px 30px;
+  background-color: #4e4e4e;
+}
+
+.right-wrapper {
+  display: flex;
+  flex: 3;
+  flex-direction: column;
+  margin: 50px 30px;
+}
+
+.options,
+.options-bottom {
+  display: flex;
+  width: 100%;
+  margin-bottom: 50px;
+}
+
+.helper-option,
+.helper-option-bottom {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.helper-img,
+.helper-img-bottom {
+  height: 50px;
+  width: 50px;
+  margin-bottom: 10px;
+}
+.helper-text,
+.helper-text-bottom {
+  font-size: 15px;
+}
+
+.scroll_wrapper {
+  margin: 0 0px;
+}
+
+.options-bottom {
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  margin: auto;
+}
+
+.helper-option-bottom {
+  flex: 1;
+  align-items: center;
 }
