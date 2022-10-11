@@ -16,8 +16,11 @@ window.addEventListener('load', () => {
   const saveCacheButton = document.querySelector('#save_cache')
   const autoSaveToggle = document.querySelector('#auto_save')
   const resetButton = document.querySelector('#reset')
+  const reloadTextButton = document.querySelector('#reload_from_text')
+  const reloadCacheButton = document.querySelector('#reload_from_cache')
   
-  
+  //various MISC functions
+
   function saveCacheGame(){
     let number = parseInt(counter.textContent)
     let bonus=parseInt(currentActiveBonus.textContent);
@@ -28,7 +31,8 @@ window.addEventListener('load', () => {
     localStorage.setItem("save", JSON.stringify(save))
   }
   
-  
+  //Events functions
+
   triggerButton.addEventListener('click', () => {
     //put variable in html file then get it at each function call with the following line
     let bonus=parseInt(currentActiveBonus.textContent);
@@ -54,49 +58,77 @@ window.addEventListener('load', () => {
         else{
           messageArea.textContent = "not enough money :'("
         }
-    })
+  })
 
-    saveTextButton.addEventListener('click', ()=>{
-      let number = parseInt(counter.textContent)
-      let bonus=parseInt(currentActiveBonus.textContent);
-      var save = {
-          score: number,
-          activeBonus: bonus
-      }
-      inputSave.value = JSON.stringify(save)
+  saveTextButton.addEventListener('click', ()=>{
+    let number = parseInt(counter.textContent)
+    let bonus=parseInt(currentActiveBonus.textContent);
+    var save = {
+        score: number,
+        activeBonus: bonus
+    }
+    inputSave.value = JSON.stringify(save)
     
-    })
+  })
 
-    saveCacheButton.addEventListener('click', ()=>{
-      saveCacheGame()
-    })
+  saveCacheButton.addEventListener('click', ()=>{
+    saveCacheGame()
+  })
 
-    autoSaveToggle.addEventListener('click', ()=>{
-      let currentStr = autoSaveToggle.textContent
-      const str2toggle1 = "Disable Auto Save"
-      const str2toggle2 = "Enable Auto Save"
-      if(currentStr === str2toggle2){
-        autoSaveToggle.textContent = str2toggle1
-        window.value =  window.setInterval(function(){saveCacheGame()}, 1000)
-      }
-      else{
-        autoSaveToggle.textContent = str2toggle2
-        window.clearInterval(window.value)
-      }
-    })
+  autoSaveToggle.addEventListener('click', ()=>{
+    let currentStr = autoSaveToggle.textContent
+    const str2toggle1 = "Disable Auto Save"
+    const str2toggle2 = "Enable Auto Save"
+    if(currentStr === str2toggle2){
+      autoSaveToggle.textContent = str2toggle1
+      window.value =  window.setInterval(function(){saveCacheGame()}, 1000)
+    }
+    else{
+      autoSaveToggle.textContent = str2toggle2
+      window.clearInterval(window.value)
+    }
+  })
 
-    resetButton.addEventListener('click', ()=>{
-      counter.textContent = 0
-      currentActiveBonus.textContent = 0
-      activeBonusCost.textContent = 0
-      if(window.value){
-        window.clearInterval(window.value)
-        autoSaveToggle.textContent = "Enable Auto Save"
-      }
-      window.localStorage.removeItem('save')
-    })
+  resetButton.addEventListener('click', ()=>{
+    counter.textContent = 0
+    currentActiveBonus.textContent = 0
+    activeBonusCost.textContent = 0
+    if(window.value){
+      window.clearInterval(window.value)
+      autoSaveToggle.textContent = "Enable Auto Save"
+    }
+    window.localStorage.removeItem('save')
+  })
 
+  reloadTextButton.addEventListener('click', ()=>{
+    const tmp = [counter.textContent, currentActiveBonus.textContent, activeBonusCost.textContent]
+    try{
+      const save=JSON.parse(inputSave.value)
+      counter.textContent = save.score
+      currentActiveBonus.textContent = save.activeBonus
+      activeBonusCost.textContent = save.activeBonus*10
+    }catch{
+      counter.textContent = tmp[0]
+      currentActiveBonus.textContent = tmp[1]
+      activeBonusCost.textContent = tmp[2]
+      messageArea.textContent = "failed to load text save :/"
+    }
+  })
 
+  reloadCacheButton.addEventListener('click', ()=>{
+    const tmp = [counter.textContent, currentActiveBonus.textContent, activeBonusCost.textContent]
+    try{
+      const save=JSON.parse(localStorage.getItem('save'))
+      counter.textContent = save.score
+      currentActiveBonus.textContent = save.activeBonus
+      activeBonusCost.textContent = save.activeBonus*10
+    }catch{
+      counter.textContent = tmp[0]
+      currentActiveBonus.textContent = tmp[1]
+      activeBonusCost.textContent = tmp[2]
+      messageArea.textContent = "failed to load text save :/"
+    }
+  })
 
 
 })
