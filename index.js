@@ -107,6 +107,7 @@ window.addEventListener('load', () => {
       counter.textContent = save.score
       currentActiveBonus.textContent = save.activeBonus
       activeBonusCost.textContent = save.activeBonus*10
+      messageArea.textContent = "Save Loaded successfully" 
     }catch{
       counter.textContent = tmp[0]
       currentActiveBonus.textContent = tmp[1]
@@ -122,11 +123,12 @@ window.addEventListener('load', () => {
       counter.textContent = save.score
       currentActiveBonus.textContent = save.activeBonus
       activeBonusCost.textContent = save.activeBonus*10
+      messageArea.textContent = "Save Loaded successfully" 
     }catch{
       counter.textContent = tmp[0]
       currentActiveBonus.textContent = tmp[1]
       activeBonusCost.textContent = tmp[2]
-      messageArea.textContent = "failed to load text save :/"
+      messageArea.textContent = "Failed to load text save :/"
     }
   })
 
