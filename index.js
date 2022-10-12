@@ -11,7 +11,7 @@ window.addEventListener('load', () => {
     let number = parseInt(counter.textContent);
     number++;
     counter.textContent = Number(number+bonus);
-    const element = document.getElementById('abcd');
+    const element = document.getElementById('bonus-btn');
     if( (Number(number+bonus) >= 2) && (Number(number+bonus)<20)) 
       element.innerHTML = "gooooood!!!!!";
     else if( (Number(number+bonus)>=20) && (Number(number+bonus)<50)) 
