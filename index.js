@@ -7,13 +7,16 @@
 window.addEventListener('load', () => {
   //Game element 
   const counter = document.querySelector('#value');
+  const rating = document.querySelector('#rate')
   const triggerButton = document.querySelector('#clickme')
   const activeBonusButton = document.querySelector('#active_bonus')
   const activeBonusCost = document.querySelector('#active_bonus_cost')
   const currentActiveBonus = document.querySelector('#current_active_bonus')
-  const messageArea = document.querySelector('#message_area')
+  const currentPassiveBonus = document.querySelector('#passive_bonus')
+  const passiveBonusCost = document.querySelector('#passive_bonus_cost')
   const overclockingButton  = document.querySelector("#overclock_mouse")
   const overclockingCost = document.querySelector('#overclock_bonus_cost')
+  const messageArea = document.querySelector('#message_area')
 
   //Saves Elements
   const saveTextButton = document.querySelector('#save_text')
@@ -25,7 +28,9 @@ window.addEventListener('load', () => {
   const reloadCacheButton = document.querySelector('#reload_from_cache')
 
   //pseudo-global variables
-  // window.overclockValue = false
+  window.overclockValue = false
+  window.pRate = 0
+  window.previousValueRate=0
   
   //various MISC functions
 
@@ -33,14 +38,28 @@ window.addEventListener('load', () => {
     let number = parseInt(counter.textContent)
     let bonus=parseInt(currentActiveBonus.textContent);
     let overclockCost = parseInt(overclockingCost.textContent)
+    let passiveBonus = parseInt(window.pRate)
     var save = {
         score: number,
         activeBonus: bonus,
+        PassiveBonus: passiveBonus,
         overclockCost: overclockCost
     }    
     localStorage.setItem("save", JSON.stringify(save))
   }
-  
+
+  function passiveRate(){
+    counter.textContent = window.pRate+parseInt(counter.textContent)
+  }
+  window.setInterval(function(){passiveRate()}, 1000)
+
+  function computeRate(){
+    var tmp = parseInt(counter.textContent)-window.previousValueRate
+    rate.textContent = (tmp>=0 ? tmp : 0)
+    window.previousValueRate =  parseInt(counter.textContent)
+  }
+  window.setInterval(function(){computeRate()}, 1000)
+
   //Events Game Function
 
   triggerButton.addEventListener('click', () => {
@@ -53,11 +72,13 @@ window.addEventListener('load', () => {
       messageArea.textContent = "Mining Money ^^"
     }
     else{
-      counter.innerText = parseInt(number)+parseInt(bonus)*Math.sign((Math.random()-0.5))*Math.floor(10*Math.random())
+      var tmp = parseInt(number)+parseInt(bonus)*Math.sign((Math.random()-0.25))*Math.floor(10*Math.random())
+      counter.textContent = (tmp>=0 ? tmp : 0)
     }
   })
 
   activeBonusButton.addEventListener('click', ()=>{
+      if(!window.overclockValue){
         let number = parseInt(counter.textContent)
         let bonus=parseInt(currentActiveBonus.textContent);
         let costActiveBonus=Number(activeBonusCost.textContent);
@@ -72,16 +93,29 @@ window.addEventListener('load', () => {
         else{
           messageArea.textContent = "not enough money :'("
         }
+      }
+  })
+
+  currentPassiveBonus.addEventListener('click', ()=>{
+    if(counter.textContent>=passiveBonusCost.textContent)
+    {
+      counter.textContent = parseInt(counter.textContent)-parseInt(passiveBonusCost.textContent)
+      window.pRate+=1
+      passiveBonusCost.textContent = parseInt(passiveBonusCost.textContent)+1000
+    }
+    else{
+      messageArea.textContent = "not enough money :'("
+    }
   })
 
   overclockingButton.addEventListener('click', ()=>{
-    if(counter.textContent>=overclockingCost.textContent && !window.overclockValue){
+    if(parseInt(counter.textContent)>=parseInt(overclockingCost.textContent) && !window.overclockValue){
       counter.textContent-=Number(overclockingCost.textContent)
-      overclockingCost.textContent= Number(overclockingCost.textContent)+75
-      var randTimer = Math.floor(10*Math.random()+5);
-      messageArea.textContent = "WOW YOUR MOUSE IS OVERCLOCKED FOR "+randTimer+" seconds"
+      overclockingCost.textContent= parseInt(overclockingCost.textContent)+75
+      var randTimer = Math.round(3*Math.random()+5);
+      messageArea.textContent = "WOW YOUR MOUSE IS OVERCLOCKED FOR "+randTimer+" SECONDS"
       window.overclockValue = true
-      setTimeout((tmp) => {
+      setTimeout(() => {
         window.overclockValue = false
       }, 1000*randTimer);
     }
@@ -93,11 +127,13 @@ window.addEventListener('load', () => {
   //Event Saves functions
   saveTextButton.addEventListener('click', ()=>{
     let number = parseInt(counter.textContent)
-    let bonus=parseInt(currentActiveBonus.textContent);
-    let overclockCost = parseInt(overclockingButton.textContent)
+    let bonus=parseInt(currentActiveBonus.textContent)
+    let passiveBonus = parseInt(window.pRate)
+    let overclockCost = parseInt(overclockingCost.textContent)
     var save = {
         score: number,
         activeBonus: bonus,
+        passiveBonus: passiveBonus,
         overclockCost: overclockCost
 
     }
@@ -126,6 +162,9 @@ window.addEventListener('load', () => {
     counter.textContent = 0
     currentActiveBonus.textContent = 0
     activeBonusCost.textContent = 0
+    passiveBonusCost = 0
+    window.pRate = 0
+    overclockingCost.textContent = 0
     if(window.value){
       window.clearInterval(window.value)
       autoSaveToggle.textContent = "Enable Auto Save"
@@ -134,35 +173,43 @@ window.addEventListener('load', () => {
   })
 
   reloadTextButton.addEventListener('click', ()=>{
-    const tmp = [counter.textContent, currentActiveBonus.textContent, activeBonusCost.textContent]
+    const tmp = [counter.textContent, currentActiveBonus.textContent, activeBonusCost.textContent, window.pRate]
     try{
       const save=JSON.parse(inputSave.value)
       counter.textContent = save.score
       currentActiveBonus.textContent = save.activeBonus
       activeBonusCost.textContent = save.activeBonus*10
+      window.pRate = parseInt(save.passiveBonus) //for passive stuff
+      passiveBonusCost.textContent = Number(window.pRate)*1000
       overclockingCost.textContent = save.overclockCost
       messageArea.textContent = "Save Loaded successfully" 
     }catch{
       counter.textContent = tmp[0]
       currentActiveBonus.textContent = tmp[1]
       activeBonusCost.textContent = tmp[2]
+      window.pRate = tmp[3]
+      passiveBonusCost.textContent = window.pRate*1000
       messageArea.textContent = "failed to load text save :/"
     }
   })
 
   reloadCacheButton.addEventListener('click', ()=>{
-    const tmp = [counter.textContent, currentActiveBonus.textContent, activeBonusCost.textContent]
+    const tmp = [counter.textContent, currentActiveBonus.textContent, activeBonusCost.textContent, window.pRate]
     try{
       const save=JSON.parse(localStorage.getItem('save'))
       counter.textContent = save.score
       currentActiveBonus.textContent = save.activeBonus
       activeBonusCost.textContent = save.activeBonus*10
+      window.pRate = parseInt(save.passiveBonus)
+      passiveBonusCost.textContent = Number(window.pRate)*1000
       overclockingCost.textContent = save.overclockCost
       messageArea.textContent = "Save Loaded successfully" 
     }catch{
       counter.textContent = tmp[0]
       currentActiveBonus.textContent = tmp[1]
       activeBonusCost.textContent = tmp[2]
+      window.pRate = tmp[3]
+      passiveBonusCost.textContent = window.pRate*1000
       messageArea.textContent = "Failed to load text save :/"
     }
   })
