@@ -27,7 +27,6 @@ window.addEventListener('load', () => {
   window.overclockValue = false
   window.pRate = 0
   window.previousValueRate=0
-  window.globalCounter = 0
   
   //various MISC functions
 
@@ -56,11 +55,6 @@ window.addEventListener('load', () => {
     window.previousValueRate =  parseInt(counter.textContent)
   }
   window.setInterval(function(){computeRate()}, 1000)
-
-  function updateGlobalCounter(){
-    window.globalCounter = parseInt(counter.textContent)
-  }
-  window.setInterval(function(){updateGlobalCounter}, 2)
 
   //Events Game Function
 
