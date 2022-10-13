@@ -225,9 +225,9 @@ window.addEventListener('load', () => {
       const save=JSON.parse(inputSave.value)
       counter.textContent = save.score
       currentActiveBonus.textContent = save.activeBonus
-      activeBonusCost.textContent = (save.activeBonus>0 ? save.activeBonus*10 : 0)
+      activeBonusCost.textContent = (parseInt(save.activeBonus)>0 ? save.activeBonus*10 : 10)
       window.pRate = parseInt(save.passiveBonus) //for passive stuff
-      passiveBonusCost.textContent = (window.pRate>0 ? parseInt(window.pRate)*1000 : 0)
+      passiveBonusCost.textContent = (parseInt(window.pRate)>0 ? parseInt(window.pRate)*1000 : 1000)
       overclockingCost.textContent = save.overclockCost
       messageArea.textContent = "Save Loaded successfully" 
     }catch{
