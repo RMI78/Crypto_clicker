@@ -159,9 +159,8 @@ window.addEventListener('load', () => {
             <h2>${trophy_name}</h2>
             <div class="price">
               <span class="currency"
-                ><i class="fa fa-dollar"></i
-              ></span>
-              <span class="value">earned with ${pricing} score</span>
+                ></span>
+              <span class="value">acquis avec ${pricing} de score</span>
             </div>
           </header>
         </li>
