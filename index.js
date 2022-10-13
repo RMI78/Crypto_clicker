@@ -14,6 +14,10 @@ window.addEventListener('load', () => {
   const overclockingCost = document.querySelector('#overclock_bonus_cost') //done
   const messageArea = document.querySelector('#bonus-btn') //done
 
+  //Trophies stuff
+  const trophyArea = document.querySelector('#price')
+
+
   //Saves Elements
   const saveTextButton = document.querySelector('#save_text') //done 
   const inputSave = document.querySelector('#output_save') //done
@@ -27,6 +31,7 @@ window.addEventListener('load', () => {
   window.overclockValue = false
   window.pRate = 0
   window.previousValueRate=0
+  window.trophyPers = 0
   
   //various MISC functions
 
@@ -121,6 +126,52 @@ window.addEventListener('load', () => {
     }
   })
 
+  //Event trophy functions
+  function updateTrophies(){
+    var trophy_name = null
+    var pricing = null
+    if(parseInt(counter.textContent)>=1000 && window.trophyPers == 0){
+        window.trophyPers+=1
+        trophy_name = "debutant"
+        pricing = "1000"
+    }
+    else if(parseInt(counter.textContent)>=10000 && window.trophyPers == 1){
+      window.trophyPers+=1
+      trophy_name = "intermediaire"
+      pricing = "10000"
+    }
+    else if(parseInt(counter.textContent)>=100000 && window.trophyPers == 2){
+      window.trophyPers+=1
+      trophy_name = "avancé"
+      pricing = "100000"
+    }
+    else if(parseInt(counter.textContent)>=1000000 && window.trophyPers == 3){
+      window.trophyPers+=1
+      trophy_name = "expert"
+      pricing = "1000000"
+    }
+    if(trophy_name != null){
+      trophy_template = `
+      <li class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
+      <ul class="pricing-wrapper">
+        <li>
+          <header class="pricing-header">
+            <h2>${trophy_name}</h2>
+            <div class="price">
+              <span class="currency"
+                ><i class="fa fa-dollar"></i
+              ></span>
+              <span class="value">earned with ${pricing} score</span>
+            </div>
+          </header>
+        </li>
+      </ul>
+      </li>`
+      trophyArea.innerHTML+=trophy_template
+    }
+  }
+  window.setInterval(function(){updateTrophies(), 100})
+
   //Event Saves functions
   saveTextButton.addEventListener('click', ()=>{
     let number = parseInt(counter.textContent)
@@ -175,9 +226,9 @@ window.addEventListener('load', () => {
       const save=JSON.parse(inputSave.value)
       counter.textContent = save.score
       currentActiveBonus.textContent = save.activeBonus
-      activeBonusCost.textContent = save.activeBonus*10
+      activeBonusCost.textContent = (save.activeBonus>0 ? save.activeBonus*10 : 0)
       window.pRate = parseInt(save.passiveBonus) //for passive stuff
-      passiveBonusCost.textContent = Number(window.pRate)*1000
+      passiveBonusCost.textContent = (window.pRate>0 ? parseInt(window.pRate)*1000 : 0)
       overclockingCost.textContent = save.overclockCost
       messageArea.textContent = "Save Loaded successfully" 
     }catch{
