@@ -118,7 +118,7 @@
       <div class="content-switcher">
         <h4 style="color: white">Menu</h4>
         <ul class="nav navbar-nav">
-          <li><a href="game.html">Nouvelle partie</a></li>
+          <li><a href="index.html">Nouvelle partie</a></li>
           <br />
           <li><a href="#">Enregistrer partie</a></li>
           <br />
@@ -154,7 +154,7 @@
             <div
               class="main-logo col-xs-12 col-md-3 col-md-2 col-lg-2 hidden-xs"
             >
-              <a href="#">
+              <a href="">
                 <img
                   id="logo"
                   class="img-responsive"
@@ -165,98 +165,143 @@
             </div>
             <!-- Logo Ends -->
             <!-- Statistics Starts -->
+            <div class="col-md-10 col-lg-10">
+              <ul class="unstyled bitcoin-stats text-right">
+                <li>
+                  <h6>0.0 par sec</h6>
+                  <span>Clicks par sec.</span>
+                </li>
+                <li>
+                  <h6>0</h6>
+                  <span>Bonus</span>
+                </li>
+                <li>
+                  <a href="trophy.html"
+                    ><h6>0</h6>
+                    <span>Trophées</span></a
+                  >
+                </li>
+                <li>
+                  <h6
+                    style="font-size: 20px; color: #fd961a"
+                    class="text-primary"
+                  >
+                    0
+                  </h6>
+                  <span style="font-weight: bold">Mon score</span>
+                </li>
+              </ul>
+            </div>
+            <!-- Statistics Ends -->
           </div>
         </div>
+        <!-- Navigation Menu Starts -->
+        <!-- Navigation Menu Ends -->
       </header>
       <!-- Header Ends -->
-      <!-- Slider Starts -->
-      <div
-        id="main-slide"
-        class="carousel-fade"
-        data-ride="carousel"
-      >
-        <!-- Indicators Ends -->
-        <!-- Carousel Inner Starts -->
-        <div class="carousel-inner">
-          <!-- Carousel Item Starts -->
-          <div class="item active bg-parallax item-1">
-            <div class="slider-content">
-              <div class="container">
-                <div class="slider-text text-center">
-                  <h3 class="slide-title">
-                    Minage <span>Ludique </span> et <br /><span>Addictif</span>
-                    des <br />Coins
-                  </h3>
-				  <br>
-                  <p>
-                    <a href="game.html" class="slider btn btn-primary"
-                      >Jouer</a
-                    >
-                  </p>
+      <!-- About Section Starts -->
+      <section class="about-us">
+        <div class="container">
+          <!-- Section Title Starts -->
+          <div class="row text-center">
+            <h2 class="title-head">CrypCoins <span>Clicker</span></h2>
+            <div class="title-head-subtitle">
+              <p>Appuyer sur le bitcoin pour commencer</p>
+            </div>
+          </div>
+          <!-- Section Title Ends -->
+          <!-- Section Content Starts -->
+          <div class="row about-content">
+            <div class="col-sm-12 col-md-5 col-lg-6 text-center">
+              <div id="clickme"><img
+                id="about-us"
+                class="img-responsive img-about-us"
+                src="images/about-us.png"
+                alt="about us"
+              /></div>
+            </div>
+            <span id="value" style="display: none;">0</span>
+            <div class="col-sm-12 col-md-7 col-lg-6">
+              <div class="tab-content">
+                <h3 class="title-about">Vos actions</h3>
+                <marquee
+                  behavior="scroll"
+                  direction="up"
+                  width="100%"
+                  height="auto"
+                  style="background-color: #484848; color: white;"
+                >
+                  <p id="bonus-btn"></p>
+                </marquee>
+               </div>
+
+                <div>
+                  <ul class="unstyled user" style="float: left">
+                    <li class="sign-in">
+                      <button class="btn btn-primary"> Active Bonus : 20$ </button>
+                    </li>
+                    <li class="sign-up">
+                      <button class="btn btn-primary">Inactive Bonus : 10$</button>
+                    </li>
+                  </ul>
                 </div>
               </div>
             </div>
           </div>
-          <!-- Carousel Item Ends -->
+          <!-- Section Content Ends -->
         </div>
-        <!-- Carousel Inner Ends -->
-      </div>
-      <!-- Slider Ends -->
-	  <br>
+      </section>
+      <!-- About Section Ends -->
+      <br />
       <!-- Features Section Starts -->
       <section class="features">
         <div class="container">
           <div class="row features-row">
             <!-- Feature Box Starts -->
-            <div class="feature-box col-md-4 col-sm-12">
+            <a href="" class="feature-box col-md-3 col-sm-12 clickable-item">
+              <div class="feature-icon">
+                <img id="download-bitcoin" src="pictures/pioche.png" />
+              </div>
+              <div class="feature-box-content">
+                <h3 class="feature-text">Outil-Pioche</h3>
+                <p class="feature-text">1 CrypCoins par seconde</p>
+              </div>
+            </a>
+            <a class="feature-box col-md-3 col-sm-12 clickable-item">
+              <span class="feature-icon">
+                <img id="download-bitcoin" src="pictures/ASIC.png" />
+              </span>
+              <div class="feature-box-content">
+                <h3>Outil-ASIC</h3>
+                <p>10 CrypCoins par seconde</p>
+              </div>
+            </a>
+            <!-- Feature Box Ends -->
+            <a class="feature-box col-md-3 col-sm-12 clickable-item">
+              <span class="feature-icon">
+                <img id="download-bitcoin" src="pictures/serveur.png" />
+              </span>
+              <div class="feature-box-content">
+                <h3>Serveur-Btc</h3>
+                <p>10 CrypCoins par seconde</p>
+              </div>
+            </a>
+            <a class="feature-box col-md-3 col-sm-12 clickable-item">
               <span class="feature-icon">
                 <img
                   id="download-bitcoin"
-                  src="images/icons/orange/download-bitcoin.png"
-                  alt="download bitcoin"
+                  src="pictures/ferme de serveur.png"
                 />
               </span>
               <div class="feature-box-content">
-                <h3>Miner des CrypCoins</h3>
-                <p>
-                  clicker et le minage des coins se fera automatiquement en fond
-                </p>
+                <h3>Ferme-Serveur</h3>
+                <p>100 CrypCoins par seconde</p>
               </div>
-            </div>
-            <!-- Feature Box Ends -->
-            <!-- Feature Box Starts -->
-            <div class="feature-box two col-md-4 col-sm-12">
-              <span class="feature-icon">
-                <img
-                  id="add-bitcoins"
-                  src="images/icons/orange/add-bitcoins.png"
-                  alt="add bitcoins"
-                />
-              </span>
-              <div class="feature-box-content">
-                <h3>Gagner des trophées</h3>
-                <p>Accumulez des récompenses et masterizer votre jeu</p>
-              </div>
-            </div>
-            <!-- Feature Box Ends -->
-            <!-- Feature Box Starts -->
-            <div class="feature-box three col-md-4 col-sm-12">
-              <span class="feature-icon">
-                <img
-                  id="buy-sell-bitcoins"
-                  src="images/icons/orange/buy-sell-bitcoins.png"
-                  alt="buy and sell bitcoins"
-                />
-              </span>
-              <div class="feature-box-content">
-                <h3>Investir/Echanger</h3>
-                <p>Investir et échanger vos récompenses</p>
-              </div>
-            </div>
-            <!-- Feature Box Ends -->
+            </a>
           </div>
         </div>
       </section>
+      <!-- Features Section Ends -->
 
       <!-- Template JS Files -->
       <script src="js/jquery-2.2.4.min.js"></script>
@@ -271,4 +316,3 @@
     <!-- Wrapper Ends -->
   </body>
 </html>
-

@@ -1,7 +1,3 @@
-// function increment() {
-//   var button = document.getElementById("value").value;
-//   button++;
-// };
 
 
 window.addEventListener('load', () => {
@@ -213,7 +209,4 @@ window.addEventListener('load', () => {
       messageArea.textContent = "Failed to load text save :/"
     }
   })
-
-
-
 })
