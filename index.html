@@ -14,14 +14,30 @@
     <h3>Crypto clicker</h3>
       <span id="value">0</span>
       <button id="clickme">Click me</button>
-      <button id="active_bonus">Buy active bonus</button>
-
-
+      <p>rate: <span id="rate">0</span> crypto/s</p>
+      <p>you have +<span id="current_active_bonus">0</span> current bonus at each click</p>
+      <button id="active_bonus">Buy active bonus</button> <p> Cost of an active bonus: <span id="active_bonus_cost">10</span></p>
+      <button id="passive_bonus">Buy passive bonus</button> <p>Cost of a passive bonus: <span id="passive_bonus_cost">1000</span> </p>
+      <button id="overclock_mouse">Overclock the mouse</button> <p>Cost of an overclocking: <span id="overclock_bonus_cost">75</span> (Warning: overclocking may cause unexpected behavior)</p>
+      <p id="message_area"></p>
   </div>
-
-  <marquee behavior="scroll" direction="up" width="100%" height="200" bgcolor="#EEEEEE">
-    <h2>Texte défilant verticalement</h2>
+  <div id="trophy_zone">
+    <p>Here lays all your different trophys</p>
+    <ul id="trophy_stand"></ul>
+  </div>
+  <div class="save_zone">
+    <button id="auto_save">Enable Auto Save</button>
+    <button id="save_cache">Save Cache Game</button>
+    <button id="reload_from_cache">Reload Cache Game</button>
+    <button id="save_text">Save Text Game</button>
+    <button id="reload_from_text">Reload Text Game</button>
+    <input type="text" id="output_save">  
+  </div>  
+  <div id="danger_zone">
+    <button id="reset">Reset the game (cache included)</button>
+  </div>
  </marquee>
 </body>
 
 </html>
+
