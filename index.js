@@ -1,5 +1,4 @@
-
-
+let test = 10;
 window.addEventListener('load', () => {
   //Game element 
   const counter = document.querySelector('.text-primary'); //done
