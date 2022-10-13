@@ -2,31 +2,33 @@
 
 window.addEventListener('load', () => {
   //Game element 
-  const counter = document.querySelector('#value');
-  const rating = document.querySelector('#rate')
-  const triggerButton = document.querySelector('#clickme')
-  const activeBonusButton = document.querySelector('#active_bonus')
-  const activeBonusCost = document.querySelector('#active_bonus_cost')
-  const currentActiveBonus = document.querySelector('#current_active_bonus')
-  const currentPassiveBonus = document.querySelector('#passive_bonus')
-  const passiveBonusCost = document.querySelector('#passive_bonus_cost')
-  const overclockingButton  = document.querySelector("#overclock_mouse")
-  const overclockingCost = document.querySelector('#overclock_bonus_cost')
-  const messageArea = document.querySelector('#message_area')
+  const counter = document.querySelector('.text-primary'); //done
+  const rating = document.querySelector('#rate') //done
+  const triggerButton = document.querySelector('#about-us') //done
+  const activeBonusButton = document.querySelector('#active_bonus') 
+  const activeBonusCost = document.querySelector('#active_bonus_cost') //done
+  const currentActiveBonus = document.querySelector('#current_active_bonus') //done
+  const PassiveBonusButton = document.querySelector('#passive_bonus_button') //done
+  const currentPassiveBonus = document.querySelector('#current_passive_bonus')
+  const passiveBonusCost = document.querySelector('#passive_bonus_cost') //done
+  const overclockingButton  = document.querySelector("#overclock_mouse") //done
+  const overclockingCost = document.querySelector('#overclock_bonus_cost') //done
+  const messageArea = document.querySelector('#bonus-btn') //done
 
   //Saves Elements
-  const saveTextButton = document.querySelector('#save_text')
-  const inputSave = document.querySelector('#output_save')
-  const saveCacheButton = document.querySelector('#save_cache')
-  const autoSaveToggle = document.querySelector('#auto_save')
-  const resetButton = document.querySelector('#reset')
-  const reloadTextButton = document.querySelector('#reload_from_text')
-  const reloadCacheButton = document.querySelector('#reload_from_cache')
+  const saveTextButton = document.querySelector('#save_text') //done 
+  const inputSave = document.querySelector('#output_save') //done
+  const saveCacheButton = document.querySelector('#save_cache') //done
+  const autoSaveToggle = document.querySelector('#auto_save') //done
+  const resetButton = document.querySelector('#reset') //done
+  const reloadTextButton = document.querySelector('#reload_from_text') //done
+  const reloadCacheButton = document.querySelector('#reload_from_cache') //done
 
   //pseudo-global variables
   window.overclockValue = false
   window.pRate = 0
   window.previousValueRate=0
+  window.globalCounter = 0
   
   //various MISC functions
 
@@ -55,6 +57,11 @@ window.addEventListener('load', () => {
     window.previousValueRate =  parseInt(counter.textContent)
   }
   window.setInterval(function(){computeRate()}, 1000)
+
+  function updateGlobalCounter(){
+    window.globalCounter = parseInt(counter.textContent)
+  }
+  window.setInterval(function(){updateGlobalCounter}, 2)
 
   //Events Game Function
 
@@ -92,12 +99,13 @@ window.addEventListener('load', () => {
       }
   })
 
-  currentPassiveBonus.addEventListener('click', ()=>{
+  PassiveBonusButton.addEventListener('click', ()=>{
     if(counter.textContent>=passiveBonusCost.textContent)
     {
       counter.textContent = parseInt(counter.textContent)-parseInt(passiveBonusCost.textContent)
       window.pRate+=1
       passiveBonusCost.textContent = parseInt(passiveBonusCost.textContent)+1000
+      currentPassiveBonus.textContent = parseInt(currentPassiveBonus.textContent)+1
     }
     else{
       messageArea.textContent = "not enough money :'("
@@ -142,8 +150,8 @@ window.addEventListener('load', () => {
 
   autoSaveToggle.addEventListener('click', ()=>{
     let currentStr = autoSaveToggle.textContent
-    const str2toggle1 = "Disable Auto Save"
-    const str2toggle2 = "Enable Auto Save"
+    const str2toggle1 = "Engistrement automatique activé"
+    const str2toggle2 = "Engistrement automatique désactivé"
     if(currentStr === str2toggle2){
       autoSaveToggle.textContent = str2toggle1
       window.value =  window.setInterval(function(){saveCacheGame()}, 1000)
